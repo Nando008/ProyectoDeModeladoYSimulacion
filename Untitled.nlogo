@@ -1,10 +1,6 @@
+globals [bandera contadorDos tempo ]
 
 to setup
-
-  set transferencia_de_calor 0
-  set volumen 0
-  set masa 0
-  set tiempo 0
 
   ;Inicio del fuergo y el material
 
@@ -88,21 +84,36 @@ to setup
 
   ;Final del fuego y material (Codigo de utilizable para los otros materiales)
 
-
+  set bandera 1
 
 end
 
 to go
 
+  if bandera = 1 [
+
   reset-ticks
 
+  ;hallar valores
+
+
+    set volumen (Largo_del_material * Ancho_del_material * Alto_del_material) / 1000000
+
+    set masa precision (volumen * densidad) 12
+
+    set transferencia_de_calor (temperatura_final - temperatura_inicial) * masa * capacidad_calorica
+
+
+    set tiempo (transferencia_de_calor / potencia)
+  ;end
 
   let contador temperatura_final - temperatura_inicial + 1
 
-  let contadorDos temperatura_inicial
+  set contadorDos temperatura_inicial
 
   repeat contador [
 
+     set tempo (ln (temperatura_final / contadorDos)) / 8.45E-4
 
     if contadorDos >= 96.125[
       ask patches with [
@@ -208,19 +219,12 @@ to go
 
   ]
 
-  ;hallar valores
-  set volumen Largo_del_material * Ancho_del_material * Alto_del_material
-  set masa densidad * volumen
-  set transferencia_de_calor masa * capacidad_calorica * (temperatura_final - temperatura_inicial )
-  set tiempo transferencia_de_calor / potencia
-  ;end
+    set bandera 0
+  ]
 
-  ;grafica
-  plot volumen
-  plot masa
-  plot transferencia_de_calor
-  plot tiempo
-  ;end
+
+
+
 
 end
 
@@ -230,7 +234,7 @@ to processes
   ; constantes [densidad (7850), potencia (500), capacidad_calorica(450), temperatura_final(1535)]
 
   ;let volumen largo * ancho * alto
-  ;let masa densidad * volumen
+  ;let masa volumen * densidad
   ;let transferencia_de_calor masa * capacidad_calorica * (temperatura_final - temperatura_inicial )
   ;let tiempo transferencia_de_calor / potencia
   ;let temperatura_final
@@ -242,10 +246,10 @@ to reset
   clear-all
 
   ;hierro
-  set temperatura_inicial 22
-  set largo_del_material 40
-  set ancho_del_material 4
-  set alto_del_material 10
+  set temperatura_inicial 20
+  set largo_del_material 10
+  set ancho_del_material 48
+  set alto_del_material 1
   set transferencia_de_calor 0
   set volumen 0
   set masa 0
@@ -255,11 +259,9 @@ to reset
   set capacidad_calorica 450
   set temperatura_final 1535
   ;
-
+  set bandera 0
 
 end
-
-
 
 
 
@@ -353,7 +355,7 @@ INPUTBOX
 142
 177
 temperatura_inicial
-22.0
+20.0
 1
 0
 Number
@@ -364,7 +366,7 @@ INPUTBOX
 142
 240
 Largo_del_material
-40.0
+10.0
 1
 0
 Number
@@ -375,7 +377,7 @@ INPUTBOX
 142
 303
 Ancho_del_material
-4.0
+48.0
 1
 0
 Number
@@ -386,7 +388,7 @@ INPUTBOX
 142
 365
 Alto_del_material
-10.0
+1.0
 1
 0
 Number
@@ -441,7 +443,7 @@ INPUTBOX
 906
 234
 volumen
-1600.0
+4.8E-4
 1
 0
 Number
@@ -452,7 +454,7 @@ INPUTBOX
 907
 300
 masa
-1.256E7
+3.768
 1
 0
 Number
@@ -463,7 +465,7 @@ INPUTBOX
 906
 166
 transferencia_de_calor
-8.551476E12
+2568834.0
 1
 0
 Number
@@ -474,10 +476,28 @@ INPUTBOX
 907
 366
 tiempo
-1.7102952E10
+5137.668
 1
 0
 Number
+
+PLOT
+922
+97
+1365
+374
+TRANSFERENCIA DE CALOR
+Tiempo
+Temperatura
+0.0
+10.0
+0.0
+10.0
+true
+false
+"" ""
+PENS
+"pen-1" 1.0 0 -7500403 true "" "plot tempo"
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -821,24 +841,12 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.4.0
+NetLogo 6.2.2
 @#$#@#$#@
 @#$#@#$#@
 1.0
-    org.nlogo.sdm.gui.AggregateDrawing 5
-        org.nlogo.sdm.gui.StockFigure "attributes" "attributes" 1 "FillColor" "Color" 225 225 182 273 146 60 40
-            org.nlogo.sdm.gui.WrappedStock "datos" "0" 1
-        org.nlogo.sdm.gui.ConverterFigure "attributes" "attributes" 1 "FillColor" "Color" 130 188 183 162 64 50 50
-            org.nlogo.sdm.gui.WrappedConverter "tiempo" "entrada"
+    org.nlogo.sdm.gui.AggregateDrawing 1
         org.nlogo.sdm.gui.ReservoirFigure "attributes" "attributes" 1 "FillColor" "Color" 192 192 192 185 169 30 30
-        org.nlogo.sdm.gui.RateConnection 3 211 174 308 75 304 134 NULL NULL 0 0 0
-            org.jhotdraw.figures.ChopEllipseConnector REF 5
-            org.jhotdraw.standard.ChopBoxConnector REF 1
-            org.nlogo.sdm.gui.WrappedRate "" ""
-                org.nlogo.sdm.gui.WrappedReservoir  REF 2 0
-        org.nlogo.sdm.gui.BindingConnection 2 203 97 308 75 NULL NULL 0 0 0
-            org.jhotdraw.contrib.ChopDiamondConnector REF 3
-            org.nlogo.sdm.gui.ChopRateConnector REF 6
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
