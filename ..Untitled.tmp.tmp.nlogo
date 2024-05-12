@@ -136,17 +136,17 @@ to go
 
       if banderaDos = 0 [
 
-    ask turtle 0 [set color red setxy 3 31 set heading 90 pen-down fd 10]
-    ask turtle 10 [set color red setxy 3 21 set heading 90 pen-down fd 10]
-    ask turtle 9 [set color red setxy 4 22 set heading 90 pen-down fd 9 ]
-    ask turtle 1 [set color red setxy 4 30 set heading 90 pen-down fd 9 ]
-    ask turtle 8 [set color red setxy 5 23 set heading 90 pen-down fd 8]
-    ask turtle 2 [set color red setxy 5 29 set heading 90 pen-down fd 8]
-    ask turtle 7 [set color red setxy 6 24 set heading 90 pen-down fd 7]
-    ask turtle 3 [set color red setxy 6 28 set heading 90 pen-down fd 7]
-    ask turtle 4 [set color red setxy 7 27 set heading 90 pen-down fd 6]
-    ask turtle 6 [set color red setxy 7 25 set heading 90 pen-down fd 6]
-    ask turtle 5 [set color red setxy 8 26 set heading 90 pen-down fd 5]
+    ask turtle 0 [set color red setxy 3 30 set heading 90 pen-down fd 8]
+    ask turtle 10 [set color red setxy 3 20 set heading 90 pen-down fd 8]
+    ask turtle 9 [set color red setxy 4 21 set heading 90 pen-down fd 7 ]
+    ask turtle 1 [set color red setxy 4 29 set heading 90 pen-down fd 7 ]
+    ask turtle 8 [set color red setxy 5 22 set heading 90 pen-down fd 6]
+    ask turtle 2 [set color red setxy 5 28 set heading 90 pen-down fd 6]
+    ask turtle 7 [set color red setxy 6 23 set heading 90 pen-down fd 5]
+    ask turtle 3 [set color red setxy 6 27 set heading 90 pen-down fd 5]
+    ask turtle 4 [set color red setxy 7 26 set heading 90 pen-down fd 4]
+    ask turtle 6 [set color red setxy 7 24 set heading 90 pen-down fd 4]
+    ask turtle 5 [set color red setxy 8 25 set heading 90 pen-down fd 3]
 
 
       set banderaDos 1
@@ -154,15 +154,15 @@ to go
 
     if banderaDos = 1 [
 
-    ask turtle 0 [set color black set heading 90 pen-down bk 10]
-    ask turtle 10 [set color black set heading 90 pen-down bk 10]
-    ask turtle 9 [set color black set heading 90 pen-down bk 9 ]
-    ask turtle 1 [set color black set heading 90 pen-down bk 9 ]
-    ask turtle 8 [set color black set heading 90 pen-down bk 8]
-    ask turtle 2 [set color black set heading 90 pen-down bk 8]
-    ask turtle 7 [set color black set heading 90 pen-down bk 7]
-    ask turtle 3 [set color black set heading 90 pen-down bk 7]
-    ask turtle 4 [set color black set heading 90 pen-down bk 6]
+    ask turtle 0 [set color black set heading 90 pen-down bk 8]
+    ask turtle 10 [set color black set heading 90 pen-down bk 8]
+    ask turtle 9 [set color black set heading 90 pen-down bk 7]
+    ask turtle 1 [set color black set heading 90 pen-down bk 7]
+    ask turtle 8 [set color black set heading 90 pen-down bk 6]
+    ask turtle 2 [set color black set heading 90 pen-down bk 6]
+    ask turtle 7 [set color black set heading 90 pen-down bk 5]
+    ask turtle 3 [set color black set heading 90 pen-down bk 5]
+    ask turtle 4 [set color black set heading 90 pen-down bk ]
     ask turtle 6 [set color black set heading 90 pen-down bk 6]
     ask turtle 5 [set color black set heading 90 pen-down bk 5]
 
