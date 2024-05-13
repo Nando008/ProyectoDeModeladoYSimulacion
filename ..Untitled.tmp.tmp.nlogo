@@ -1,4 +1,4 @@
-globals [bandera banderaDos contadorDos tempo taim]
+globals [bandera banderaDos contadorDos tempo taim t1 t2 t3 t4 t5 t6 t7 t8 t9 t10 t11 t12 t13 t14 t15 t16 tiempoCont]
 
 to setup
 
@@ -107,30 +107,41 @@ to go
        set po po + 1
 
     ]
-
-
   ; agente turtle fin
 
 
   ;hallar valores
-
-
     set volumen (Largo_del_material * Ancho_del_material * Alto_del_material) / 1000000
 
     set masa precision (volumen * densidad) 12
 
     set transferencia_de_calor (temperatura_final - temperatura_inicial) * masa * capacidad_calorica
 
-
     set tiempo (transferencia_de_calor / potencia)
+
+    set tiempoCont precision(tiempo)7
+
+    set t1 (tiempoCont + 1 ) / 16
+    set t2 t1 + t1
+    set t3 t2 + t1
+    set t4 t3 + t1
+    set t5 t4 + t1
+    set t6 t5 + t1
+    set t7 t6 + t1
+    set t8 t7 + t1
+    set t9 t8 + t1
+    set t10 t9 + t1
+    set t11 t10 + t1
+    set t12 t11 + t1
+    set t13 t12 + t1
+    set t14 t13 + t1
+    set t15 t14 + t1
+    set t16 round tiempo - 2
+
   ;end
 
-  let contador temperatura_final - temperatura_inicial + 1
-
-  set contadorDos temperatura_inicial
-
-   ;set contadorDos potencia
-
+  set contadorDos 0
+  let contador round tiempo
 
   repeat contador [
 
@@ -162,131 +173,125 @@ to go
     ask turtle 2 [set color black set heading 90 pen-down bk 6]
     ask turtle 7 [set color black set heading 90 pen-down bk 5]
     ask turtle 3 [set color black set heading 90 pen-down bk 5]
-    ask turtle 4 [set color black set heading 90 pen-down bk ]
-    ask turtle 6 [set color black set heading 90 pen-down bk 6]
-    ask turtle 5 [set color black set heading 90 pen-down bk 5]
+    ask turtle 4 [set color black set heading 90 pen-down bk 4]
+    ask turtle 6 [set color black set heading 90 pen-down bk 4]
+    ask turtle 5 [set color black set heading 90 pen-down bk 3]
 
       Set banderaDos 0
     ]
 
-     ;set tempo ln (temperatura_final * (contadorDos - 18)) / 1.29E-3
+      set taim ((contadorDos * potencia) / (masa * capacidad_calorica)) + temperatura_inicial
 
-      set tempo (masa * capacidad_calorica * (contadorDos - temperatura_inicial )) / potencia
+      ;set tempo (masa * capacidad_calorica * (contadorDos - temperatura_inicial )) / potencia; Funcional
 
-      ;set tempo (masa * capacidad_calorica * (temperatura_final - temperatura_inicial)) / contadorDos
-
-      set taim tiempo - tempo
+      ;set taim tiempoCont - tempo; prueba
 
 
-    if contadorDos >= 96.125[
+    if contadorDos >= t1[
       ask patches with [
       (pxcor >= 12 and pxcor <= 15 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
 
     ]
 
-    if contadorDos >= 192.25[
+    if contadorDos >= t2[
       ask patches with [
       (pxcor >= 15 and pxcor <= 18 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 288.375[
+    if contadorDos >= t3[
       ask patches with [
       (pxcor >= 18 and pxcor <= 21 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 384.5[
+    if contadorDos >= t4[
       ask patches with [
       (pxcor >= 21 and pxcor <= 24 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 480.625[
+    if contadorDos >= t5[
       ask patches with [
       (pxcor >= 24 and pxcor <= 27 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 576.75[
+    if contadorDos >= t6[
       ask patches with [
       (pxcor >= 27 and pxcor <= 30 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 672.875[
+    if contadorDos >= t7[
       ask patches with [
       (pxcor >= 30 and pxcor <= 33 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 769[
+    if contadorDos >= t8[
       ask patches with [
       (pxcor >= 33 and pxcor <= 36 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 865.125[
+    if contadorDos >= t9[
       ask patches with [
       (pxcor >= 36 and pxcor <= 39 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 961.25[
+    if contadorDos >= t10[
       ask patches with [
       (pxcor >= 39 and pxcor <= 41 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 1057.375[
+    if contadorDos >= t11[
       ask patches with [
       (pxcor >= 41 and pxcor <= 44 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 1153.5[
+    if contadorDos >= t12[
       ask patches with [
       (pxcor >= 44 and pxcor <= 47 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 1249.625[
+    if contadorDos >= t13[
       ask patches with [
       (pxcor >= 47 and pxcor <= 50 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 1345.75[
+    if contadorDos >= t14[
       ask patches with [
       (pxcor >= 50 and pxcor <= 53 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 1441.875[
+    if contadorDos >= t15[
       ask patches with [
       (pxcor >= 53 and pxcor <= 56 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos = temperatura_final[
+    if contadorDos = t16[
       ask patches with [
       (pxcor >= 56 and pxcor <= 60 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-
     set contadorDos contadorDos + 1
-
+       print taim
     tick
 
   ]
 
     set bandera 0
   ]
-
-
-
 
 
 end
@@ -309,10 +314,10 @@ to reset
   clear-all
 
   ;hierro
-  set temperatura_inicial 20
+  set temperatura_inicial 40
   set largo_del_material 10
-  set ancho_del_material 48
-  set alto_del_material 1
+  set ancho_del_material 3
+  set alto_del_material 3
   set transferencia_de_calor 0
   set volumen 0
   set masa 0
@@ -320,12 +325,11 @@ to reset
   set densidad 7850
   set potencia 500
   set capacidad_calorica 450
-  set temperatura_final 1535
+  set temperatura_final 1536.5
   ;
   set bandera 0
 
 end
-
 
 
 
@@ -413,20 +417,20 @@ NIL
 
 INPUTBOX
 0
-115
+138
 132
-175
+198
 temperatura_inicial
-20.0
+40.0
 1
 0
 Number
 
 INPUTBOX
 0
-178
+201
 132
-238
+261
 Largo_del_material
 10.0
 1
@@ -435,31 +439,31 @@ Number
 
 INPUTBOX
 0
-241
+264
 132
-301
+324
 Ancho_del_material
-48.0
+3.0
 1
 0
 Number
 
 INPUTBOX
 0
-303
+326
 132
-363
+386
 Alto_del_material
-1.0
+3.0
 1
 0
 Number
 
 INPUTBOX
-252
-439
-333
-499
+5
+444
+86
+504
 densidad
 7850.0
 1
@@ -467,10 +471,10 @@ densidad
 Number
 
 INPUTBOX
-343
-439
-407
-499
+96
+444
+160
+504
 potencia
 500.0
 1
@@ -478,10 +482,10 @@ potencia
 Number
 
 INPUTBOX
-414
-439
-528
-499
+167
+444
+281
+504
 capacidad_calorica
 450.0
 1
@@ -489,12 +493,12 @@ capacidad_calorica
 Number
 
 INPUTBOX
-534
-439
-636
-499
+287
+444
+389
+504
 temperatura_final
-1535.0
+1536.5
 1
 0
 Number
@@ -505,7 +509,7 @@ INPUTBOX
 1035
 70
 volumen
-4.8E-4
+0.0
 1
 0
 Number
@@ -516,7 +520,7 @@ INPUTBOX
 1173
 70
 masa
-3.768
+0.0
 1
 0
 Number
@@ -527,7 +531,7 @@ INPUTBOX
 900
 70
 transferencia_de_calor
-2568834.0
+0.0
 1
 0
 Number
@@ -538,28 +542,49 @@ INPUTBOX
 1307
 70
 tiempo
-5137.668
+0.0
 1
 0
 Number
 
 PLOT
-759
-76
-1316
-424
+772
+73
+1308
+442
 tranferencia de calor
-temperatura
- tiempo
+Tiempo
+ temperatura
 0.0
 10.0
 0.0
 10.0
 true
-false
+true
 "" ""
 PENS
-"pen-0" 1.0 0 -8053223 true "" "plot tempo"
+"Temperatura actual de la barra" 1.0 1 -8053223 true "" "plot taim"
+"Temperatura final de la barra" 1.0 0 -7500403 true "" "plot temperatura_final"
+
+CHOOSER
+0
+89
+132
+134
+Materiales
+Materiales
+"hierro"
+0
+
+TEXTBOX
+396
+440
+993
+531
+Densidad = La densidad tipica del hierro es de aproximadamente 7850 kg/m^3.\n\nPotencia = Se refiere a la potencia del soplete utilizado para calentar el hierro(500W).\n\nCapacidad calorica = Indica cuánto calor se necesita para cambiar la temperatura de un material(450 j/kg).\n\nTemperatura final = la temperatura final representa el punto al que deseas que el hierro alcance antes de que cambie su estado fisico.\n
+10
+0.0
+1
 
 @#$#@#$#@
 ## WHAT IS IT?

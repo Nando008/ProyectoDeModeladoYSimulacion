@@ -1,4 +1,4 @@
-globals [bandera contadorDos tempo ]
+globals [bandera banderaDos contadorDos tempo taim t1 t2 t3 t4 t5 t6 t7 t8 t9 t10 t11 t12 t13 t14 t15 t16 tiempoCont]
 
 to setup
 
@@ -94,136 +94,204 @@ to go
 
   reset-ticks
 
+  ; agente turtle inicio
+    let lista [ [2 30] [3 29] [4 28] [5 27] [6 26] [7 25] [6 24] [5 23] [4 22] [3 21] [2 20] ]
+    let po 0
+
+    create-turtles length lista[
+       set color red
+       left 0
+       let pos item po lista
+       setxy (first pos) (last pos)
+
+       set po po + 1
+
+    ]
+  ; agente turtle fin
+
+
   ;hallar valores
-
-
     set volumen (Largo_del_material * Ancho_del_material * Alto_del_material) / 1000000
 
     set masa precision (volumen * densidad) 12
 
     set transferencia_de_calor (temperatura_final - temperatura_inicial) * masa * capacidad_calorica
 
-
     set tiempo (transferencia_de_calor / potencia)
+
+    set tiempoCont precision(tiempo)7
+
+    set t1 (tiempoCont + 1 ) / 16
+    set t2 t1 + t1
+    set t3 t2 + t1
+    set t4 t3 + t1
+    set t5 t4 + t1
+    set t6 t5 + t1
+    set t7 t6 + t1
+    set t8 t7 + t1
+    set t9 t8 + t1
+    set t10 t9 + t1
+    set t11 t10 + t1
+    set t12 t11 + t1
+    set t13 t12 + t1
+    set t14 t13 + t1
+    set t15 t14 + t1
+    set t16 round tiempo - 2
+
   ;end
 
-  let contador temperatura_final - temperatura_inicial + 1
-
-  set contadorDos temperatura_inicial
+  set contadorDos 0
+  let contador round tiempo
 
   repeat contador [
 
-     set tempo (ln (temperatura_final / contadorDos)) / 8.45E-4
+      if banderaDos = 0 [
 
-    if contadorDos >= 96.125[
+    ask turtle 0 [set color red setxy 3 30 set heading 90 pen-down fd 8]
+    ask turtle 10 [set color red setxy 3 20 set heading 90 pen-down fd 8]
+    ask turtle 9 [set color red setxy 4 21 set heading 90 pen-down fd 7 ]
+    ask turtle 1 [set color red setxy 4 29 set heading 90 pen-down fd 7 ]
+    ask turtle 8 [set color red setxy 5 22 set heading 90 pen-down fd 6]
+    ask turtle 2 [set color red setxy 5 28 set heading 90 pen-down fd 6]
+    ask turtle 7 [set color red setxy 6 23 set heading 90 pen-down fd 5]
+    ask turtle 3 [set color red setxy 6 27 set heading 90 pen-down fd 5]
+    ask turtle 4 [set color red setxy 7 26 set heading 90 pen-down fd 4]
+    ask turtle 6 [set color red setxy 7 24 set heading 90 pen-down fd 4]
+    ask turtle 5 [set color red setxy 8 25 set heading 90 pen-down fd 3]
+
+
+      set banderaDos 1
+    ]
+
+    if banderaDos = 1 [
+
+    ask turtle 0 [set color black set heading 90 pen-down bk 8]
+    ask turtle 10 [set color black set heading 90 pen-down bk 8]
+    ask turtle 9 [set color black set heading 90 pen-down bk 7]
+    ask turtle 1 [set color black set heading 90 pen-down bk 7]
+    ask turtle 8 [set color black set heading 90 pen-down bk 6]
+    ask turtle 2 [set color black set heading 90 pen-down bk 6]
+    ask turtle 7 [set color black set heading 90 pen-down bk 5]
+    ask turtle 3 [set color black set heading 90 pen-down bk 5]
+    ask turtle 4 [set color black set heading 90 pen-down bk 4]
+    ask turtle 6 [set color black set heading 90 pen-down bk 4]
+    ask turtle 5 [set color black set heading 90 pen-down bk 3]
+
+      Set banderaDos 0
+    ]
+
+      set taim ((contadorDos * potencia) / (masa * capacidad_calorica)) + temperatura_inicial
+
+      ;set tempo (masa * capacidad_calorica * (contadorDos - temperatura_inicial )) / potencia; Funcional
+
+      ;set taim tiempoCont - tempo; prueba
+
+
+    if contadorDos >= t1[
       ask patches with [
       (pxcor >= 12 and pxcor <= 15 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
 
     ]
 
-    if contadorDos >= 192.25[
+    if contadorDos >= t2[
       ask patches with [
       (pxcor >= 15 and pxcor <= 18 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 288.375[
+    if contadorDos >= t3[
       ask patches with [
       (pxcor >= 18 and pxcor <= 21 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 384.5[
+    if contadorDos >= t4[
       ask patches with [
       (pxcor >= 21 and pxcor <= 24 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 480.625[
+    if contadorDos >= t5[
       ask patches with [
       (pxcor >= 24 and pxcor <= 27 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 576.75[
+    if contadorDos >= t6[
       ask patches with [
       (pxcor >= 27 and pxcor <= 30 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 672.875[
+    if contadorDos >= t7[
       ask patches with [
       (pxcor >= 30 and pxcor <= 33 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 769[
+    if contadorDos >= t8[
       ask patches with [
       (pxcor >= 33 and pxcor <= 36 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 865.125[
+    if contadorDos >= t9[
       ask patches with [
       (pxcor >= 36 and pxcor <= 39 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 961.25[
+    if contadorDos >= t10[
       ask patches with [
       (pxcor >= 39 and pxcor <= 41 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 1057.375[
+    if contadorDos >= t11[
       ask patches with [
       (pxcor >= 41 and pxcor <= 44 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 1153.5[
+    if contadorDos >= t12[
       ask patches with [
       (pxcor >= 44 and pxcor <= 47 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 1249.625[
+    if contadorDos >= t13[
       ask patches with [
       (pxcor >= 47 and pxcor <= 50 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 1345.75[
+    if contadorDos >= t14[
       ask patches with [
       (pxcor >= 50 and pxcor <= 53 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos >= 1441.875[
+    if contadorDos >= t15[
       ask patches with [
       (pxcor >= 53 and pxcor <= 56 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-    if contadorDos = temperatura_final[
+    if contadorDos = t16[
       ask patches with [
       (pxcor >= 56 and pxcor <= 60 and pycor <= 30 and pycor >= 20  )
       ][set pcolor red]
     ]
 
-
     set contadorDos contadorDos + 1
-
+       print taim
     tick
 
   ]
 
     set bandera 0
   ]
-
-
-
 
 
 end
@@ -246,18 +314,18 @@ to reset
   clear-all
 
   ;hierro
-  set temperatura_inicial 20
+  set temperatura_inicial 40
   set largo_del_material 10
-  set ancho_del_material 48
-  set alto_del_material 1
+  set ancho_del_material 3
+  set alto_del_material 3
   set transferencia_de_calor 0
   set volumen 0
   set masa 0
   set tiempo 0
   set densidad 7850
   set potencia 500
-  set capacidad_calorica 450
-  set temperatura_final 1535
+  set capacidad_calorica 40
+  set temperatura_final 1536.5
   ;
   set bandera 0
 
@@ -268,13 +336,11 @@ end
 
 
 
-
-
 @#$#@#$#@
 GRAPHICS-WINDOW
-153
+136
 47
-768
+751
 438
 -1
 -1
@@ -299,9 +365,9 @@ ticks
 30.0
 
 BUTTON
-431
+411
 10
-494
+474
 43
 NIL
 setup\n
@@ -316,9 +382,9 @@ NIL
 1
 
 BUTTON
-358
+338
 10
-421
+401
 43
 NIL
 reset\n
@@ -333,9 +399,9 @@ NIL
 1
 
 BUTTON
-503
+483
 10
-566
+546
 43
 NIL
 go\n
@@ -350,21 +416,21 @@ NIL
 1
 
 INPUTBOX
-10
-117
-142
-177
+0
+138
+132
+198
 temperatura_inicial
-20.0
+40.0
 1
 0
 Number
 
 INPUTBOX
-10
-180
-142
-240
+0
+201
+132
+261
 Largo_del_material
 10.0
 1
@@ -372,32 +438,32 @@ Largo_del_material
 Number
 
 INPUTBOX
-10
-243
-142
-303
+0
+264
+132
+324
 Ancho_del_material
-48.0
+3.0
 1
 0
 Number
 
 INPUTBOX
-10
-305
-142
-365
+0
+326
+132
+386
 Alto_del_material
-1.0
+3.0
 1
 0
 Number
 
 INPUTBOX
-259
-449
-340
-509
+5
+444
+86
+504
 densidad
 7850.0
 1
@@ -405,10 +471,10 @@ densidad
 Number
 
 INPUTBOX
-350
-449
-414
-509
+96
+444
+160
+504
 potencia
 500.0
 1
@@ -416,10 +482,10 @@ potencia
 Number
 
 INPUTBOX
-421
-449
-535
-509
+167
+444
+281
+504
 capacidad_calorica
 450.0
 1
@@ -427,77 +493,98 @@ capacidad_calorica
 Number
 
 INPUTBOX
-541
-449
-643
-509
+287
+444
+389
+504
 temperatura_final
-1535.0
+1536.5
 1
 0
 Number
 
 INPUTBOX
-778
-174
-906
-234
+907
+10
+1035
+70
 volumen
-4.8E-4
+0.0
 1
 0
 Number
 
 INPUTBOX
-778
-240
-907
-300
+1044
+10
+1173
+70
 masa
-3.768
+0.0
 1
 0
 Number
 
 INPUTBOX
-778
-106
-906
-166
+772
+10
+900
+70
 transferencia_de_calor
-2568834.0
+0.0
 1
 0
 Number
 
 INPUTBOX
-778
-306
-907
-366
+1178
+10
+1307
+70
 tiempo
-5137.668
+0.0
 1
 0
 Number
 
 PLOT
-922
-97
-1365
-374
-TRANSFERENCIA DE CALOR
+772
+73
+1308
+442
+tranferencia de calor
 Tiempo
-Temperatura
+ temperatura
 0.0
 10.0
 0.0
 10.0
 true
-false
+true
 "" ""
 PENS
-"pen-1" 1.0 0 -7500403 true "" "plot tempo"
+"Temperatura actual de la barra" 1.0 1 -8053223 true "" "plot taim"
+"Temperatura final de la barra" 1.0 0 -7500403 true "" "plot temperatura_final"
+
+CHOOSER
+0
+89
+132
+134
+Materiales
+Materiales
+"hierro"
+0
+
+TEXTBOX
+396
+440
+993
+531
+Densidad = La densidad tipica del hierro es de aproximadamente 7850 kg/m^3.\n\nPotencia = Se refiere a la potencia del soplete utilizado para calentar el hierro(500W).\n\nCapacidad calorica = Indica cuánto calor se necesita para cambiar la temperatura de un material(450 j/kg).\n\nTemperatura final = la temperatura final representa el punto al que deseas que el hierro alcance antes de que cambie su estado fisico.\n
+10
+0.0
+1
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -841,7 +928,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.2.2
+NetLogo 6.4.0
 @#$#@#$#@
 @#$#@#$#@
 1.0
